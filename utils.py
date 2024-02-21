@@ -24,7 +24,8 @@ def _generate_inputs(im_path,mask_path, mask_id):
   print("the mask id is ===", mask_id)
 
   source_image = Image.open(im_path)
-  source_image = img.convert("RGB")
+  source_image = source_image.convert("RGB")
+  
   sd_mask = cv2.imread(mask_path,cv2.IMREAD_GRAYSCALE)
 
   out = (sd_mask+(-mask_id*np.ones_like(sd_mask)))
