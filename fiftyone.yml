@@ -1,0 +1,8 @@
+fiftyone:
+  version: "==0.23.0rc1"
+name: "@Neuralearn/data_augment"
+version: "1.0.0"
+description: "Augment segmentation dataset using stable diffusion inpainting model"
+url: "https://github.com/Neuralearn/data_augment"
+operators:
+  - augment_with_sd_inpainting
