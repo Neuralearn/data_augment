@@ -23,13 +23,14 @@ def _create_pipeline(model_id):
 def _generate_inputs(im_path,mask_path, mask_id):
   print("the mask id is ===", mask_id)
 
-  source_image = cv2.imread(im_path)
+  source_image = Image.open(im_path)
+  source_image = img.convert("RGB")
   sd_mask = cv2.imread(mask_path,cv2.IMREAD_GRAYSCALE)
 
   out = (sd_mask+(-mask_id*np.ones_like(sd_mask)))
   mask=-(np.clip(1e10*np.multiply(out,out),a_min=0,a_max=255)-255)
 
-  pil_image = Image.fromarray(source_image).resize((512,512))
+  pil_image = source_image.resize((512,512))
   pil_mask = Image.fromarray(mask).resize((512,512))
   return pil_image, pil_mask
 
